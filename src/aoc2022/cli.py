@@ -1,5 +1,7 @@
 import typer
 
+from src.aoc2022.puzzle_factory import PuzzleFactory
+
 app = typer.Typer(add_completion=False)
 
 
@@ -9,7 +11,8 @@ def day(
     part: int = typer.Option(1, "-p", "--part"),
     test_input: str = typer.Option(None, "-i", "--input-file")
 ):
-    print(f"Answer (day {num} [part {part}] - with input from {test_input}):")
+    answer = PuzzleFactory().solve(day_num=1, part=part, test_input=test_input)
+    print(f"Answer (day {num} [part {part}] - with input from {test_input}): {answer}")
 
 
 @app.callback(invoke_without_command=True)
