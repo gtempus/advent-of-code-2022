@@ -11,8 +11,9 @@ def day(
     part: int = typer.Option(1, "-p", "--part"),
     test_input: str = typer.Option(None, "-i", "--input-file")
 ):
-    answer = PuzzleFactory().solve(day_num=1, part=part, test_input=test_input)
-    print(f"Answer (day {num} [part {part}] - with input from {test_input}): {answer}")
+    solver = PuzzleFactory().create(day_num=1, part=part, test_input=test_input)
+    solver.solve()
+    print(f"Answer (day {num} [part {part}] - with input from {test_input}): {solver.answer}")
 
 
 @app.callback(invoke_without_command=True)
